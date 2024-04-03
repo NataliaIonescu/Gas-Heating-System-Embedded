@@ -1,0 +1,40 @@
+const int greenLedPin = 2;
+const int yellowLedPin = 3;
+const int redLedPin = 4;
+
+int potentiometerValue = 0;
+int mappedValue = 0;
+
+void setup() {
+  pinMode(A0, INPUT); 
+  Serial.begin(9600); 
+  pinMode(greenLedPin, OUTPUT); 
+  pinMode(yellowLedPin, OUTPUT);
+  pinMode(redLedPin, OUTPUT);
+}
+
+void loop() {
+  potentiometerValue = analogRead(A0); 
+  mappedValue = map(potentiometerValue, 0, 1023, 0, 100); 
+
+  Serial.print("potentiometerValue: ");
+  Serial.println(potentiometerValue); 
+  Serial.print("mappedValue: ");
+  Serial.println(mappedValue); 
+
+  if (mappedValue <= 33) { 
+    digitalWrite(greenLedPin, HIGH);
+    digitalWrite(yellowLedPin, LOW);
+    digitalWrite(redLedPin, LOW);
+  } else if (mappedValue > 33 && mappedValue <= 66) { 
+    digitalWrite(greenLedPin, HIGH);
+    digitalWrite(yellowLedPin, HIGH);
+    digitalWrite(redLedPin, LOW);
+  } else { 
+    digitalWrite(greenLedPin, LOW);
+    digitalWrite(yellowLedPin, LOW);
+    digitalWrite(redLedPin, HIGH);
+  }
+  
+  delay(100); 
+}

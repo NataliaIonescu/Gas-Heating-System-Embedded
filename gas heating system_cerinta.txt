@@ -1,0 +1,6 @@
+Create a program that prints in the serial monitor an analog value of a potentiometer.
+● The first 33% light a green LED
+● The first 33-66% light a yellow LED and the green LED
+● At 66-100% light up a red LED, and the others are off.
+
+Real-time practical application: Gas heating systems. The potentiometer could be a pressure sensor. If the pressure gets too high shut off a valve (the red LED) to avoid killing people.
